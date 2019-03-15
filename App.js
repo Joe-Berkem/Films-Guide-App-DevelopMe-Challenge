@@ -1,21 +1,20 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'react-native';
+import List from './screens/List';
+import Detail from './screens/Detail';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
-    );
-  }
-}
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+StatusBar.setBarStyle('light-content');
+
+  const RootNavigator = createStackNavigator ({
+    List: List,
+    Detail: Detail,
+  }, {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#68aa63',
+      },
+      headerTintColor: 'white',
+    }
+  });
+export default createAppContainer(RootNavigator)
