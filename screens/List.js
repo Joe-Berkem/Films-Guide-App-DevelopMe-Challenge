@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Text, FlatList, TouchableHighlight } from 'react-native';
 import axios from 'axios';
-import films from '../films.json'
+import FilmsLoading from '../components/FilmsLoading';
 
 class List extends Component {
     constructor(props) {
@@ -74,6 +74,9 @@ class List extends Component {
     }
 
     render() {
+        if (this.state.fetchingData) {
+            return <FilmsLoading />;
+        }
         return (
             <FlatList 
             onRefresh={this.refreshData} 
@@ -87,6 +90,7 @@ class List extends Component {
     }
     
     componentDidMount() {
+        this.setState({ fetchingData: true });
         this.fetchData()
     }  
 }
