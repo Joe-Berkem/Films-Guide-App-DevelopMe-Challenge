@@ -30,12 +30,21 @@ class Detail extends Component {
         return (
         <ScrollView contentContainerStyle={styles.container}>
             <View style={styles.imageContainer}>
-                <Image style={imageStyle} source={{uri: source}}></Image>
-            </View>
+                {!!film.tmdbImageId && 
+                    (<Image 
+                        style={imageStyle} 
+                        source={{uri: source}}>
+                    </Image>
+                    )}
+            </View> 
             <View style={styles.textContainer}>
                 <View style={styles.releaseRating}>
-                    <Text style={styles.text}>Released in {film.year}</Text>
-                    <Text style={styles.text}>Rating: {film.tmdbRating}%</Text>
+                    {!!film.year && 
+                        (<Text style={styles.text}>Released in {film.year}</Text>
+                        )}
+                    {!!film.tmdbRating && 
+                        (<Text style={styles.text}>Rating: {film.tmdbRating}%</Text>
+                        )}
                 </View>
             </View>
             <View style={styles.textContainer}>

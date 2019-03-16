@@ -67,7 +67,9 @@ class List extends Component {
                         <Text style={styles.filmText}>{moment(`${item.showtimes[0].startsAtDate} ${item.showtimes[0].startsAtTime}`, 'YYYY-MM-DD HH:mm').calendar()} on {item.showtimes[0].channel}</Text>
                     </View>
                     <View style={styles.ratingContainer}>
-                        <Text style={styles.ratingText}>{item.tmdbRating}%</Text>
+                        {!!item.tmdbRating && 
+                            (<Text style={styles.ratingText}>{item.tmdbRating}%</Text>
+                        )}
                     </View>
                 </View>
             </TouchableHighlight>
