@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {StyleSheet, View, Text, FlatList, TouchableHighlight } from 'react-native';
 import axios from 'axios';
 import FilmsLoading from '../components/FilmsLoading';
+import moment from 'moment';
 
 class List extends Component {
     constructor(props) {
@@ -63,7 +64,7 @@ class List extends Component {
                 <View style={styles.container}>
                     <View style={styles.textContainer}>
                         <Text style={styles.filmTitle}>{item.name}</Text>
-                        <Text style={styles.filmText}>{item.showtimes[0].startsAtDate} at {item.showtimes[0].startsAtTime} on {item.showtimes[0].channel}</Text>
+                        <Text style={styles.filmText}>{moment(`${item.showtimes[0].startsAtDate} ${item.showtimes[0].startsAtTime}`, 'YYYY-MM-DD HH:mm').calendar()} on {item.showtimes[0].channel}</Text>
                     </View>
                     <View style={styles.ratingContainer}>
                         <Text style={styles.ratingText}>{item.tmdbRating}%</Text>

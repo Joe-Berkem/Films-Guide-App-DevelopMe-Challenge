@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Text, StyleSheet, View, Image, TouchableOpacity, ScrollView} from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { WebBrowser } from 'expo';
+import moment from 'moment';
 
 class Detail extends Component {
     static navigationOptions = ({navigation}) => {
@@ -40,7 +41,7 @@ class Detail extends Component {
             <View style={styles.textContainer}>
                 <View>
                     <Text style={styles.text}>Showtimes:</Text>
-                    <Text>{film.showtimes[0].startsAtDate} at {film.showtimes[0].startsAtTime} on {film.showtimes[0].channel}</Text>
+                    <Text style={styles.filmText}>{moment(`${film.showtimes[0].startsAtDate} ${film.showtimes[0].startsAtTime}`, 'YYYY-MM-DD HH:mm').calendar()} on {film.showtimes[0].channel}</Text>
                 </View>
                 <View style={styles.lineBreak}></View>
                 <View>
