@@ -58,7 +58,6 @@ class List extends Component {
     } 
 
     renderItem({item}) {
-        
         return (
             <TouchableHighlight onPress={ () => this.onPress(item)} underlaycolor='e4e4e4'>
                 <View style={styles.container}>
@@ -108,6 +107,7 @@ const styles = StyleSheet.create({
     textContainer: {
         marginHorizontal: 15,
         marginVertical: 15,
+        maxWidth: '75%',
     },
     filmTitle: {
         fontSize: 18,
